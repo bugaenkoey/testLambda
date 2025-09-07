@@ -1,0 +1,7 @@
+/.env
+/*.env
+/comand.txt
+/node_modules
+/r.txt
+/venv
+/gpt.md
