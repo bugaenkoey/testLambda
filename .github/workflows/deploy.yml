@@ -28,11 +28,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       # --------
-      # - name: Deploy to Lambda
-      #   uses: appleboy/lambda-action@master
-      #   with:
-      #     function_name: getUsers
-      #     zip_file: lambda.zip
+      - name: Create Lambda if not exists
+        run: |
+          aws lambda get-function --function-name getUsers || \
+          aws lambda create-function \
+            --function-name getUsers \
+            --runtime nodejs18.x \
+            --role arn:aws:iam::211125775962:user/lambda@bevgen77 \
+            --handler index.handler \
+            --zip-file fileb://lambda.zip
+
       # +++++++
       - name: Deploy to Lambda
         uses: appleboy/lambda-action@master
