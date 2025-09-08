@@ -47,8 +47,8 @@ jobs:
           handler: index.handler
           role: ${{ secrets.AWS_ROLE }}
           aws_region: ${{ secrets.AWS_REGION }}
-          environment: |
-            DB_HOST=${{ secrets.DB_HOST }}
+          # environment: |
+          env: DB_HOST=${{ secrets.DB_HOST }}
             DB_PORT=${{ secrets.DB_PORT }}
             DB_USER=${{ secrets.DB_USER }}
             DB_PASS=${{ secrets.DB_PASS }}
