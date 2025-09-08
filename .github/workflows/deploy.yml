@@ -34,7 +34,7 @@ jobs:
           aws lambda create-function \
             --function-name getUsers \
             --runtime nodejs18.x \
-            --role arn:aws:iam::211125775962:user/lambda@bevgen77 \
+            --role arn:aws:iam::211125775962:role/lambda-execution-role \
             --handler index.handler \
             --zip-file fileb://lambda.zip
 
