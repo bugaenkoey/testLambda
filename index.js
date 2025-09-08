@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const mysql = require("mysql2/promise");
+// const mysql = require("mysql");
 
 exports.handler = async (event) => {
   try {
@@ -15,6 +16,7 @@ exports.handler = async (event) => {
     });
 
     const [rows] = await connection.execute("SELECT * FROM users LIMIT 5");
+    // const [rows] = await connection.execute("SELECT * FROM services LIMIT 5");
     await connection.end();
 
     return {
@@ -23,6 +25,7 @@ exports.handler = async (event) => {
     };
   } catch (err) {
     console.error("DB error:", err);
+    // connection.end();
     return {
       statusCode: 500,
       body: JSON.stringify(err.message),
