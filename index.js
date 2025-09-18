@@ -6,9 +6,9 @@ const mysql = require("mysql2/promise");
 exports.handler = async (event) => {
   try {
     console.log("DB config:", process.env.DB_HOST, process.env.DB_USER);
-
+    const MYSQL_URI = process.env.MYSQL_URI;
     const connection = await mysql.createConnection(
-      process.env.MYSQL_URI
+      MYSQL_URI
       //       {
       //   host: process.env.DB_HOST, // зчитуємо з environment variables
       //   port: process.env.DB_PORT,
